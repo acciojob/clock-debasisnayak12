@@ -12,7 +12,13 @@ function updateTime() {
 		hour12: true
 	};
 	const formateDateTime = current.toLocaleString(undefined, options);
-	dateAndTime.textContent = formateDateTime;
+	const [date,timePart] = formateDateTime.split(', ');
+	const [time, ampm] = timePart.split(' ');
+	const capitalAmPm = ampm.toUpperCase();
+
+	const formate = `${date}, ${time} ${capitalAmPm}`;
+	dateAndTime.textContent = formate;
+	
 }
 
 updateTime();
